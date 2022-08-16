@@ -1,3 +1,4 @@
+
 ////////////////////////////////////////////////////////////////////////////////
 // TinyBasic Plus
 ////////////////////////////////////////////////////////////////////////////////
@@ -360,7 +361,7 @@ typedef short unsigned LINENUM;
 
 
 static unsigned char program[kRamSize];
-static const char *  sentinel = "HELLO";
+static const char *  sentinel ="";
 static unsigned char *txtpos,*list_line, *tmptxtpos;
 static unsigned char expression_error;
 static unsigned char *tempsp;
@@ -529,11 +530,11 @@ static unsigned char *sp;
 static unsigned char table_index;
 static LINENUM linenum;
 
-static const unsigned char okmsg[]            PROGMEM = "OK";
-static const unsigned char whatmsg[]          PROGMEM = "What? ";
-static const unsigned char howmsg[]           PROGMEM =	"How?";
-static const unsigned char sorrymsg[]         PROGMEM = "Sorry!";
-static const unsigned char initmsg[]          PROGMEM = "TinyBasic Plus " kVersion;
+static const unsigned char okmsg[]            PROGMEM = "[OK]";
+static const unsigned char whatmsg[]          PROGMEM = "[What?]";
+static const unsigned char howmsg[]           PROGMEM =	"[How?]";
+static const unsigned char sorrymsg[]         PROGMEM = "[Sorry!]";
+static const unsigned char initmsg[]          PROGMEM = "Arch Linux " kVersion;
 static const unsigned char memorymsg[]        PROGMEM = " bytes free.";
 #ifdef ARDUINO
 #ifdef ENABLE_EEPROM
@@ -541,12 +542,12 @@ static const unsigned char eeprommsg[]        PROGMEM = " EEProm bytes total.";
 static const unsigned char eepromamsg[]       PROGMEM = " EEProm bytes available.";
 #endif
 #endif
-static const unsigned char breakmsg[]         PROGMEM = "break!";
-static const unsigned char unimplimentedmsg[] PROGMEM = "Unimplemented";
+static const unsigned char breakmsg[]         PROGMEM = "[break!]";
+static const unsigned char unimplimentedmsg[] PROGMEM = "[Unimplemented]";
 static const unsigned char backspacemsg[]     PROGMEM = "\b \b";
 static const unsigned char indentmsg[]        PROGMEM = "    ";
-static const unsigned char sderrormsg[]       PROGMEM = "SD card error.";
-static const unsigned char sdfilemsg[]        PROGMEM = "SD file error.";
+static const unsigned char sderrormsg[]       PROGMEM = "[SD card error.]";
+static const unsigned char sdfilemsg[]        PROGMEM = "[SD file error.]";
 static const unsigned char dirextmsg[]        PROGMEM = "(dir)";
 static const unsigned char slashmsg[]         PROGMEM = "/";
 static const unsigned char spacemsg[]         PROGMEM = " ";
@@ -1086,7 +1087,7 @@ prompt:
     goto execline;
   }
 
-  getln( '>' );
+  getln( '$' );
   toUppercaseBuffer();
 
   txtpos = program_end+sizeof(unsigned short);
